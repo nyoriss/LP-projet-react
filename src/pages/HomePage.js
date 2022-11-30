@@ -1,5 +1,6 @@
 import { Autocomplete, TextField, Button, Grid } from '@mui/material';
 import { useEffect, useState } from "react";
+import { HeaderHome } from "../composants/HeaderHome"
 
 export function HomePage() {
     let numRandom = Math.floor(Math.random() * 905)+1;
@@ -40,8 +41,7 @@ export function HomePage() {
     return (
       <div id="sidebar">
         <center>
-            <h1>Bienvenue dans le monde des pokémon</h1>
-            <br/><br/>
+            <HeaderHome></HeaderHome>
             <div>
                 <Autocomplete
                     disablePortal
