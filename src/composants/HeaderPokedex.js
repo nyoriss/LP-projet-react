@@ -1,4 +1,6 @@
 import {Button, Box} from '@mui/material';
+import { NavLink } from "react-router-dom";
+
 export function HeaderPokedex() {
     return (
             <div>
@@ -6,8 +8,8 @@ export function HeaderPokedex() {
                     sx={{
                     backgroundColor: 'primary.dark',
                 }}>
-                <Button variant="contained" color="success" href={`/`} style={{margin: "10px"}}>
-                    ← Retour au menu principal
+                <Button variant="contained" color="success" style={{margin: "10px"}}>
+                    <NavLink to={`/`}> ← Retour au menu principal</NavLink>
                 </Button>
                     <center>
                     <div>

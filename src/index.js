@@ -12,6 +12,7 @@ import { PokePage } from './pages/PokePage';
 import { HomePage } from './pages/HomePage';
 import { PokedexPage } from './pages/PokedexPage';
 import { BookMarkListComposant } from './composants/BookMarkListComposant';
+import { Redirect } from './composants/Redirect';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: "pokemon/:pokemonId",
     element: <PokePage />,
+  },
+  {
+    path: "redirect/:page/:Id",
+    element: <Redirect />,
   },
 ]);
 

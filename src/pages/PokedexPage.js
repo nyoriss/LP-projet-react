@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Grid, Container, Button} from '@mui/material';
 import { PokeCard } from '../composants/PokeCard'
 import { HeaderPokedex } from "../composants/HeaderPokedex";
+import { NavLink } from "react-router-dom";
 
 export function PokedexPage() {
   let limite = 20;
@@ -19,7 +20,6 @@ export function PokedexPage() {
 
     let tempTab = [];
     let tempTabImg = [];
-
     console.log(url)
 
     fetch(url)
@@ -59,20 +59,20 @@ export function PokedexPage() {
             </Container>
             <div>
               <br/>
-              <Button style={{ color: '#000', textDecoration: 'none'}} href={`../pokedex/0`}> 
-                {"<<<< début"}   
+              <Button style={{ color: '#000', textDecoration: 'none'}}> 
+                <NavLink to={`../redirect/pokedex/0`}>{"<<<< début"}</NavLink>
               </Button>
-              <a >&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</a>
-              <Button style={{ color: '#000', textDecoration: 'none'}} href={`../pokedex/${offset==0? 0 : parseInt(offset)-20}`}> 
-                {"<< précédent"}   
+              &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+              <Button style={{ color: '#000', textDecoration: 'none'}}> 
+                <NavLink to={`../redirect/pokedex/${offset==0? 0 : parseInt(offset)-20}`}>{"<< précédent"}</NavLink>
               </Button>
-              <a >&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</a>
-              <Button style={{ color: '#000', textDecoration: 'none'}} href={`../pokedex/${offset==880? 880 : parseInt(offset)+20}`}> 
-                {"suivant >>"}
+              &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+              <Button style={{ color: '#000', textDecoration: 'none'}}> 
+                <NavLink to={`../redirect/pokedex/${offset==880? 880 : parseInt(offset)+20}`}>{"suivant >>"}</NavLink>
               </Button>
-              <a >&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</a>
-              <Button style={{ color: '#000', textDecoration: 'none'}} href={`../pokedex/880`}> 
-                {"fin >>>>"}
+              &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+              <Button style={{ color: '#000', textDecoration: 'none'}}> 
+                <NavLink to={`../redirect/pokedex/880`}>{"fin >>>>"}</NavLink>
               </Button>
               <div><br/></div>
             </div>

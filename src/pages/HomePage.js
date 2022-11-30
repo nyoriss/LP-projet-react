@@ -8,6 +8,7 @@ import { createStore } from "redux";
 import BookMark from "../composants/BookMark";
 import BookMarkList from "../composants/BookMarkList";
 import reducers from "../reducers";
+import { NavLink } from 'react-router-dom';
 
 export function HomePage() {
     let numRandom = Math.floor(Math.random() * 905)+1;
@@ -57,16 +58,23 @@ export function HomePage() {
                     sx={{ width: 300, height: 50 }}
                     renderInput={(tabPokemons) => <TextField{...tabPokemons}  label="Pokemon" />}
                 />
-                <Button variant="contained" color="success" id="bouton" height="50px" href={`pokemon/`+numeroPokemon}>
-                  {"->"}
+                <Button variant="contained" color="success" id="bouton" height="50px" >
+                  <NavLink to={`pokemon/`+numeroPokemon}>{"->"}</NavLink>
                 </Button>
               <br/><br/>
-              <Button variant="contained" color="error" href={`pokedex/0`}>Pokédex</Button>
+              <Button variant="contained" color="error">
+                <NavLink to={`pokedex/0`}>Pokédex</NavLink>
+              </Button>
               <br/><br/>
-              <Button variant="contained" color="warning" href={`pokemon/${numRandom}`}>Pokemon aléatoire</Button>
+              <Button variant="contained" color="warning">
+                <NavLink to={`pokemon/${numRandom}`}>Pokemon aléatoire</NavLink>
+              </Button>
             </div>
             <BookMarkListComposant/>
         </center>
       </div>
     )
 }
+
+
+//offset = (anciennement href=) 

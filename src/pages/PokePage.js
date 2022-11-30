@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Button, Box } from '@mui/material';
 import { PokeDetails } from '../composants/PokeDetails'
 import { BookMarkListComposant} from '../composants/BookMarkListComposant'
+import { NavLink } from "react-router-dom";
 
 export function PokePage() {
 
@@ -56,7 +57,7 @@ export function PokePage() {
         console.log(dataPoke.names[4].name)
         setNomPokemonFr(dataPoke.names[4].name)
     })
-  }, [])
+  }, [numeroPokemon])
 
   console.log("page chargée");
 
@@ -70,8 +71,8 @@ export function PokePage() {
                 sx={{
                 backgroundColor: 'primary.dark',
             }}>
-                <Button variant="contained" color="success" style={{ color: '#000', textDecoration: 'none', margin: '10px'}} href={`../pokedex/${parseInt(parseInt((numeroPokemon-1)/20)*20)}`}>
-                    ← Retour au pokedex
+                <Button variant="contained" color="success" style={{ color: '#000', textDecoration: 'none', margin: '10px'}} >
+                    <NavLink to={`../pokedex/${parseInt(parseInt((numeroPokemon-1)/20)*20)}`}>← Retour au pokedex</NavLink>
                 </Button> 
                 <center>
                     <div>
@@ -85,19 +86,30 @@ export function PokePage() {
             <PokeDetails urlImageOfficialPokemon={urlImageOfficialPokemon} 
                          numeroPokemon={numeroPokemon} 
                          nomPokemon={nomPokemon} 
-                         nomPokemonFr={nomPokemonFr} 
+                         nomPokemonFr={nomPokemonFr}  href={`../pokemon/${numeroPokemon==1? 1 : parseInt(numeroPokemon)-1}`}
                          descPokemon={descPokemon}
                          type1={typesPokemon[0]}
                          type2={typesPokemon[1]}>
             </PokeDetails>
+            <Button style={{ color: '#000', textDecoration: 'none'}} href={`../pokemon/${numeroPokemon==1? 1 : parseInt(numeroPokemon)-1}`}>
+                <NavLink to={`../redirect/pokemon/${numeroPokemon==1? 1 : parseInt(numeroPokemon)-1}`}>
+                    {"<< précédent"}
+                </NavLink>
+            </Button>
+            &#160;&#160;&#160;&#160;&#160;
+            <Button style={{ color: '#000', textDecoration: 'none'}}
+                /*onClick={() => {
+                    if(numeroPokemon>=905) {
+                        numeroPokemon = 905
+                    } else {
+                        numeroPokemon ++
+                    }
+                    }}*/> 
+                <NavLink to={`../redirect/pokemon/${numeroPokemon>=905? 905 : parseInt(numeroPokemon)+1}`}>
+                    {"suivant >>"}
+                </NavLink>
+            </Button>
             <BookMarkListComposant/>
-            <Button style={{ color: '#000', textDecoration: 'none'}} href={`../pokemon/${numeroPokemon==1? 1 : parseInt(numeroPokemon)-1}`}> 
-                {"<< précédent"}   
-              </Button>
-              <a >&#160;&#160;&#160;&#160;&#160;</a>
-              <Button style={{ color: '#000', textDecoration: 'none'}} href={`../pokemon/${numeroPokemon==905? 905 : parseInt(numeroPokemon)+1}`}> 
-                {"suivant >>"}
-              </Button>
         </center>
       </div>
     );
