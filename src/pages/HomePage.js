@@ -1,6 +1,13 @@
-import { Autocomplete, TextField, Button, Grid } from '@mui/material';
+import { Autocomplete, TextField, Button } from '@mui/material';
 import { useEffect, useState } from "react";
 import { HeaderHome } from "../composants/HeaderHome"
+import { BookMarkListComposant } from '../composants/BookMarkListComposant'
+
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+import BookMark from "../composants/BookMark";
+import BookMarkList from "../composants/BookMarkList";
+import reducers from "../reducers";
 
 export function HomePage() {
     let numRandom = Math.floor(Math.random() * 905)+1;
@@ -58,6 +65,7 @@ export function HomePage() {
               <br/><br/>
               <Button variant="contained" color="warning" href={`pokemon/${numRandom}`}>Pokemon aléatoire</Button>
             </div>
+            <BookMarkListComposant/>
         </center>
       </div>
     )

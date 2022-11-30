@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Button, Box } from '@mui/material';
 import { PokeDetails } from '../composants/PokeDetails'
-import { HeaderPokemon } from '../composants/HeaderPokemon'
+import { BookMarkListComposant} from '../composants/BookMarkListComposant'
+
 export function PokePage() {
 
   const imagePixelUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/`;
@@ -80,7 +81,6 @@ export function PokePage() {
                 </center>
             </Box>
             <br/>
-        {/*<HeaderPokemon nomPokemonFr={nomPokemonFr} numeroPokemon={numeroPokemon}></HeaderPokemon>*/}
         <center>
             <PokeDetails urlImageOfficialPokemon={urlImageOfficialPokemon} 
                          numeroPokemon={numeroPokemon} 
@@ -90,6 +90,7 @@ export function PokePage() {
                          type1={typesPokemon[0]}
                          type2={typesPokemon[1]}>
             </PokeDetails>
+            <BookMarkListComposant/>
             <Button style={{ color: '#000', textDecoration: 'none'}} href={`../pokemon/${numeroPokemon==1? 1 : parseInt(numeroPokemon)-1}`}> 
                 {"<< précédent"}   
               </Button>
