@@ -1,13 +1,6 @@
 import { Autocomplete, TextField, Button } from '@mui/material';
 import { useEffect, useState } from "react";
 import { HeaderHome } from "../composants/HeaderHome"
-import { BookMarkListComposant } from '../composants/BookMarkListComposant'
-
-import { Provider } from "react-redux";
-import { createStore } from "redux";
-import BookMark from "../composants/BookMark";
-import BookMarkList from "../composants/BookMarkList";
-import reducers from "../reducers";
 import { NavLink } from 'react-router-dom';
 
 export function HomePage() {
@@ -23,7 +16,6 @@ export function HomePage() {
         fetch(url)
         .then((response) => response.json())
         .then((data) => {
-          console.log(data)
           let i = 1
           data.results.forEach(element => {
             let nom = i+" "+element.name
@@ -41,7 +33,8 @@ export function HomePage() {
       searchButton.addEventListener('click', function() {
         let numPoke = searchBar.getAttribute("value").split(" ")[0]
         setNumeroPokemon(numPoke? numPoke:"1")
-        console.log("bouton pressé "+ numeroPokemon)
+        console.log("searchBar value : "+numPoke)
+        console.log("bouton pressé "+ numPoke)
       })
 
     })
@@ -70,11 +63,7 @@ export function HomePage() {
                 <NavLink to={`pokemon/${numRandom}`}>Pokemon aléatoire</NavLink>
               </Button>
             </div>
-            <BookMarkListComposant/>
         </center>
       </div>
     )
 }
-
-
-//offset = (anciennement href=) 

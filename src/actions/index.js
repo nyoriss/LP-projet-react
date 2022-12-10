@@ -1,15 +1,15 @@
-export const INCREMENT = 'INCREMENT';
-export const DECREMENT = 'DECREMENT';
+export const ADD = 'ADD';
+export const REMOVE = 'REMOVE';
 export const RESET = 'RESET';
 
-export function increaseCount() {
-  return ({ type: INCREMENT});
+export function addPoke() {
+  return ({ type: ADD});
 }
 
-export function decreaseCount() {
-  return ({ type: DECREMENT});
+export function removePoke() {
+  return ({ type: REMOVE});
 }
 
-export function resetCount() {
+export function resetPoke() {
   return ({ type: RESET});
 }

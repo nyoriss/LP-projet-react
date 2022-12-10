@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Button, Box } from '@mui/material';
 import { PokeDetails } from '../composants/PokeDetails'
-import { BookMarkListComposant} from '../composants/BookMarkListComposant'
 import { NavLink } from "react-router-dom";
+import { BookMarkListComposant } from "../composants/BookMarkListComposant";
 
 export function PokePage() {
 
@@ -34,7 +34,7 @@ export function PokePage() {
             data.flavor_text_entries.forEach(element => {
             if(element.language.name == "fr" && !trouve) {
                 trouve = true
-                console.log(element.flavor_text)
+                //console.log(element.flavor_text)
                 setDescPokemon(element.flavor_text)
             }
             });
@@ -46,7 +46,7 @@ export function PokePage() {
             let tempTabTypes = []
             dataPoke.types.forEach(type => {
                 tempTabTypes.push(type.type.name)
-                console.log(type.type.name)
+                //console.log(type.type.name)
             });
             setTypesPokemon(tempTabTypes)
     });
@@ -54,15 +54,13 @@ export function PokePage() {
     fetch(urlNomFr)
     .then((response) => response.json())
     .then((dataPoke) => {
-        console.log(dataPoke.names[4].name)
+        //console.log(dataPoke.names[4].name)
         setNomPokemonFr(dataPoke.names[4].name)
     })
   }, [numeroPokemon])
 
   console.log("page chargée");
-
-  //console.log(window.location.href)
-  //console.log(numeroPokemon)
+  console.log(numeroPokemon)
 
 
     return (
@@ -71,8 +69,9 @@ export function PokePage() {
                 sx={{
                 backgroundColor: 'primary.dark',
             }}>
-                <Button variant="contained" color="success" style={{ color: '#000', textDecoration: 'none', margin: '10px'}} >
-                    <NavLink to={`../pokedex/${parseInt(parseInt((numeroPokemon-1)/20)*20)}`}>← Retour au pokedex</NavLink>
+                <Button variant="contained" color="success" style={{ color: '#000', textDecoration: 'none', margin: '10px'}} 
+                    href={`../pokedex/${parseInt(parseInt((numeroPokemon-1)/20)*20)}`}>
+                    ← Retour au pokedex
                 </Button> 
                 <center>
                     <div>
@@ -92,24 +91,13 @@ export function PokePage() {
                          type2={typesPokemon[1]}>
             </PokeDetails>
             <Button style={{ color: '#000', textDecoration: 'none'}} href={`../pokemon/${numeroPokemon==1? 1 : parseInt(numeroPokemon)-1}`}>
-                <NavLink to={`../redirect/pokemon/${numeroPokemon==1? 1 : parseInt(numeroPokemon)-1}`}>
                     {"<< précédent"}
-                </NavLink>
             </Button>
             &#160;&#160;&#160;&#160;&#160;
-            <Button style={{ color: '#000', textDecoration: 'none'}}
-                /*onClick={() => {
-                    if(numeroPokemon>=905) {
-                        numeroPokemon = 905
-                    } else {
-                        numeroPokemon ++
-                    }
-                    }}*/> 
-                <NavLink to={`../redirect/pokemon/${numeroPokemon>=905? 905 : parseInt(numeroPokemon)+1}`}>
+            <Button style={{ color: '#000', textDecoration: 'none'}} href={`../pokemon/${numeroPokemon>=905? 905 : parseInt(numeroPokemon)+1}`}> 
                     {"suivant >>"}
-                </NavLink>
             </Button>
-            <BookMarkListComposant/>
+            <BookMarkListComposant numeroPokemon={numeroPokemon}></BookMarkListComposant>
         </center>
       </div>
     );

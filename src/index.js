@@ -27,10 +27,6 @@ const router = createBrowserRouter([
     path: "pokemon/:pokemonId",
     element: <PokePage />,
   },
-  {
-    path: "redirect/:page/:Id",
-    element: <Redirect />,
-  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

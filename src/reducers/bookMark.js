@@ -1,25 +1,31 @@
-import {INCREMENT, DECREMENT, RESET} from '../actions/index'
+import {ADD, REMOVE, RESET} from '../actions/index'
 
 const INITIAL_STATE = {
-  count: 0,
+  equipe: [],
   history: [],
 }
 
-function handleChange(state, change) {
-  const {count, history} = state;
+function handleChange(state, action, change) {
+  const {equipe, history} = state;
+  if(action=="ADD")
+    equipe.push(change)
+  if(action=="REMOVE")
+    equipe.splice(change, 1)
+  if(action=="RESET")
+    equipe.splice(0, equipe.length)
   return ({
-    count: count + change,
-    history: [count + change, ...history]
+    equipe: equipe,
+    history: [equipe + change, ...history]
   })
 }
 
 export default function bookMark(state = INITIAL_STATE, action) {
-  const {count, history} = state;
+  const {equipe, history} = state;
   switch(action.type) {
-    case INCREMENT:
-      return handleChange(state, 1);
-    case DECREMENT:
-      return handleChange(state, -1);
+    case ADD:
+      return handleChange(state, ADD, 1);
+    case REMOVE:
+      return handleChange(state, REMOVE, 1);
     case RESET:
       return (INITIAL_STATE)
     default:
