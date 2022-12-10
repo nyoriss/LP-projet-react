@@ -6,7 +6,7 @@ export function PokeDetails({urlImageOfficialPokemon, numeroPokemon, nomPokemon,
                   <img src={urlImageOfficialPokemon}></img>
                 </div>
                 <div id="divInfos" style={{alignSelf: "center", width: "475px"}}>
-                <Box sx={{backgroundColor: 'warning.dark', padding: '10px', height: '400px'}}>
+                <Box sx={{padding: '10px', height: '400px'}}>
                   <p style={{textAlign: "left"}}>{numeroPokemon} : {nomPokemonFr}</p>
                   <p style={{textAlign: "left"}}>{nomPokemon} (anglais)</p>
                   <p style={{textAlign: "left"}}>{descPokemon}</p>

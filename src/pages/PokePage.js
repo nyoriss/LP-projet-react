@@ -58,13 +58,14 @@ export function PokePage() {
         setNomPokemonFr(dataPoke.names[4].name)
     })
   }, [numeroPokemon])
-
+  document.body.style.backgroundImage = `url("/assets/pokeball_fond.png")`
+  document.body.style.backgroundSize = "100% 100%"; 
   console.log("page chargée");
   console.log(numeroPokemon)
 
 
     return (
-      <div>
+      <div >
             <Box
                 sx={{
                 backgroundColor: 'primary.dark',
