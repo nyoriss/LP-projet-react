@@ -12,7 +12,6 @@ import { PokePage } from './pages/PokePage';
 import { HomePage } from './pages/HomePage';
 import { PokedexPage } from './pages/PokedexPage';
 import { BookMarkListComposant } from './composants/BookMarkListComposant';
-import { Redirect } from './composants/Redirect';
 
 const router = createBrowserRouter([
   {
