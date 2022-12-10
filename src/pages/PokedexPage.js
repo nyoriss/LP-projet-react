@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Grid, Container, Button} from '@mui/material';
 import { PokeCard } from '../composants/PokeCard'
 import { HeaderPokedex } from "../composants/HeaderPokedex";
-import { NavLink } from "react-router-dom";
 
 export function PokedexPage() {
   let limite = 20;

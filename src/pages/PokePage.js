@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Button, Box } from '@mui/material';
 import { PokeDetails } from '../composants/PokeDetails'
-import { NavLink } from "react-router-dom";
 import { BookMarkListComposant } from "../composants/BookMarkListComposant";
 
 export function PokePage() {
