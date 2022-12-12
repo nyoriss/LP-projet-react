@@ -11,7 +11,6 @@ import reportWebVitals from './reportWebVitals';
 import { PokePage } from './pages/PokePage';
 import { HomePage } from './pages/HomePage';
 import { PokedexPage } from './pages/PokedexPage';
-import { BookMarkListComposant } from './composants/BookMarkListComposant';
 
 const router = createBrowserRouter([
   {
@@ -32,7 +31,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
       <RouterProvider router={router} />
-      <BookMarkListComposant/>
     </React.StrictMode>
 );
 

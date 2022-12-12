@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Button, Box } from '@mui/material';
 import { PokeDetails } from '../composants/PokeDetails'
-import { BookMarkListComposant } from "../composants/BookMarkListComposant";
 
 export function PokePage() {
 
@@ -97,7 +96,6 @@ export function PokePage() {
             <Button style={{ color: '#000', textDecoration: 'none'}} href={`../pokemon/${numeroPokemon>=905? 905 : parseInt(numeroPokemon)+1}`}> 
                     {"suivant >>"}
             </Button>
-            <BookMarkListComposant numeroPokemon={numeroPokemon}></BookMarkListComposant>
         </center>
       </div>
     );

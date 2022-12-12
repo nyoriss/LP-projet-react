@@ -10,6 +10,9 @@ export function PokedexPage() {
   offset = parseInt(offset)
   console.log("offset : "+offset)
 
+  document.body.style.backgroundImage = `url("/assets/pokemon-background-5.png")`;
+  document.body.style.backgroundSize = "100% 100%"; 
+
   const [tab, setTab] = useState([0]);
   const [tabImg, setTabImg] = useState([0]);
   const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/`;
@@ -19,17 +22,13 @@ export function PokedexPage() {
 
     let tempTab = [];
     let tempTabImg = [];
-    //console.log(url)
 
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        //console.log(data)
         for(let i=0; i<limite; i++) {
           tempTab.push(data.results[i].name)
             let ii = i+1+offset;
-            //console.log(ii)
-            //console.log(imageUrl+""+ii+""+imageUrlFin)
             tempTabImg.push(imageUrl+""+ii+""+imageUrlFin)
         }
         setTab(tempTab)
@@ -37,11 +36,6 @@ export function PokedexPage() {
     });
 
   }, []);
-
-  useEffect(() => {
-    //console.log(tab)
-  }, [tab]);
-
     return (
       <div>
         <HeaderPokedex></HeaderPokedex>
@@ -56,37 +50,29 @@ export function PokedexPage() {
                   ))}
               </Grid>
             </Container>
-            <div>
-              <br/>
-              <Button style={{ color: '#000', textDecoration: 'none'}} href={`../pokedex/0`}> 
-                {"<<<< début"}
-              </Button>
-              &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
-              <Button style={{ color: '#000', textDecoration: 'none'}} href={`../pokedex/${offset==0? 0 : parseInt(offset)-20}`}> 
-                {"<< précédent"}
-              </Button>
-              &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
-              <Button style={{ color: '#000', textDecoration: 'none'}} href={`../pokedex/${offset==880? 880 : parseInt(offset)+20}`}> 
-                {"suivant >>"}
-              </Button>
-              &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
-              <Button style={{ color: '#000', textDecoration: 'none'}} href={`../pokedex/880`}> 
-                {"fin >>>>"}
-              </Button>
-              <div><br/></div>
-            </div>
+            <center>
+              <div>
+                <br/>
+                <Button style={{ color: '#000', textDecoration: 'none'}} href={`../pokedex/0`}> 
+                  {"<<<< début"}
+                </Button>
+                &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+                <Button style={{ color: '#000', textDecoration: 'none'}} href={`../pokedex/${offset==0? 0 : parseInt(offset)-20}`}> 
+                  {"<< précédent"}
+                </Button>
+                &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+                <Button style={{ color: '#000', textDecoration: 'none'}} href={`../pokedex/${offset==880? 880 : parseInt(offset)+20}`}> 
+                  {"suivant >>"}
+                </Button>
+                &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+                <Button style={{ color: '#000', textDecoration: 'none'}} href={`../pokedex/880`}> 
+                  {"fin >>>>"}&#160;&#160;
+                </Button>
+                <div><br/></div>
+              </div>
+            </center>
           </div>
         </center>
       </div>
     );
 }
-
-//pour avoir le nom des pokemon en anglais depuis une boucle dans pokemon-species
-//console.log(i+1+' '+data.results[i].name) // en anglais
-
-
-//pour avoir un nom en fr depuis pokemon-species/X
-//data.names[4].name
-// /!\ fetch dans un composant ou tableau de promesses
-
-//export default tab;
