@@ -9,11 +9,11 @@ export function HomePage() {
     const [numeroPokemon, setNumeroPokemon] = useState([0]);
 
     document.body.style.backgroundImage = `url("/assets/pokemon-background-4.jpg")`;
-    document.body.style.backgroundSize = "100% 165%"; 
-/*
-    document.body.style.backgroundImage = `url("/assets/pokemon-background-1.png")`;
-    document.body.style.backgroundSize = "100% 175%";
-*/
+    document.body.style.backgroundSize = "100% 255%";
+
+    /*document.body.style.backgroundImage = `url("/assets/pokemon-background-1.png")`;
+    document.body.style.backgroundSize = "100% 260%";*/
+
     let tempTabPokemon = []
     let searchBar
     let searchButton
