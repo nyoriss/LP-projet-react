@@ -4,7 +4,7 @@ export function HeaderPokemon(numeroPokemon, nomPokemonFr) {
             <div>
                 <Box
                     sx={{
-                    backgroundColor: 'primary.dark',
+                        backgroundColor: 'primary.dark',
                 }}>
                     <Button style={{ color: '#000', textDecoration: 'none', margin: '10px'}} hreff={`../pokedex/${parseInt(parseInt((numeroPokemon-1)/20)*20)}`}>
                         {"Retour au pokedex"}

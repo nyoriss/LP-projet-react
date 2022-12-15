@@ -57,16 +57,15 @@ export function PokePage() {
     })
   }, [numeroPokemon])
   document.body.style.backgroundImage = `url("/assets/pokeball_fond.png")`
-  document.body.style.backgroundSize = "100% 100%"; 
+  document.body.style.backgroundSize = "100% 150%"; 
   console.log("page chargée");
   console.log(numeroPokemon)
 
 
     return (
       <div >
-            <Box
-                sx={{
-                backgroundColor: 'primary.dark',
+            <Box sx={{
+                backgroundColor: '#ff0000',
             }}>
                 <Button variant="contained" color="success" style={{ color: '#000', textDecoration: 'none', margin: '10px'}} 
                     href={`../pokedex/${parseInt(parseInt((numeroPokemon-1)/20)*20)}`}>

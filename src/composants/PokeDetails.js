@@ -1,4 +1,7 @@
 import Box from '@mui/material/Box';
+import { useDispatch, useSelector } from "react-redux";
+import { addCard, removeCard } from "../store/redux";
+
 export function PokeDetails({urlImageOfficialPokemon, numeroPokemon, nomPokemon, nomPokemonFr, descPokemon, type1, type2}) {
     return (
             <div style={{display: "flex", width: "60%"}}>

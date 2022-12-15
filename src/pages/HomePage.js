@@ -1,5 +1,6 @@
 import { Autocomplete, TextField, Button } from '@mui/material';
 import { useEffect, useState } from "react";
+import FavorisList from '../composants/favoris/FavorisList';
 import { HeaderHome } from "../composants/HeaderHome"
 
 export function HomePage() {
@@ -68,6 +69,7 @@ export function HomePage() {
                 Pokemon aléatoire
               </Button>
             </div>
+           <FavorisList/>
         </center>
       </div>
     )
