@@ -4,6 +4,7 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 import { useDispatch, useSelector } from "react-redux";
 import { addCard, removeCard } from "../store/redux";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export function PokeCard({i, offset, name, tabImg, checked}) {
 
@@ -48,7 +49,12 @@ export function PokeCard({i, offset, name, tabImg, checked}) {
         }
       };
 
-      
+      const navigate = useNavigate();
+
+      const handlePokemon = () => {
+        navigate(`../pokemon/${i+1+offset}`);
+      };
+    
 
     return (
         <Grid item xs={3}>
@@ -68,8 +74,8 @@ export function PokeCard({i, offset, name, tabImg, checked}) {
             textDecoration: 'none', 
             verticalAlign: 'middle', 
             }} 
-            href={`../pokemon/${i+1+offset}` 
-        }>
+            onClick={handlePokemon}
+        >
             <center>
                 <div style={{width: '154px', backgroundImage: 'url("/assets/pokeball_fond.png")', border: '1px solid black'}} key={i} >
                     <p>{i+1+offset} : {name}</p>
