@@ -56,17 +56,20 @@ export function PokePage() {
   }, [numeroPokemon])
   document.body.style.backgroundImage = `url("/assets/pokeball_fond.png")`
   document.body.style.backgroundSize = "100% 150%"; 
-  console.log("page chargée");
-  console.log(numeroPokemon)
-
 
   const navigate = useNavigate();
 
   const handlePokedex = () => {
-    console.log("depuis HomePage")
     navigate(`../pokedex/${parseInt(parseInt((numeroPokemon-1)/20)*20)}`);
   };
 
+  const handlePokeSuivant = () => {
+    navigate(`../pokemon/${numeroPokemon>=905? 905 : parseInt(numeroPokemon)+1}`);
+  };
+
+  const handlePokePrecedent = () => {
+    navigate(`../pokemon/${numeroPokemon==1? 1 : parseInt(numeroPokemon)-1}`);
+  };
     return (
       <div >
             <Box sx={{
@@ -93,11 +96,11 @@ export function PokePage() {
                          type1={typesPokemon[0]}
                          type2={typesPokemon[1]}>
             </PokeDetails>
-            <Button style={{ color: '#000', textDecoration: 'none'}} href={`../pokemon/${numeroPokemon==1? 1 : parseInt(numeroPokemon)-1}`}>
+            <Button style={{ color: '#000', textDecoration: 'none'}} onClick={handlePokePrecedent}>
                     {"<< précédent"}
             </Button>
             &#160;&#160;&#160;&#160;&#160;
-            <Button style={{ color: '#000', textDecoration: 'none'}} href={`../pokemon/${numeroPokemon>=905? 905 : parseInt(numeroPokemon)+1}`}> 
+            <Button style={{ color: '#000', textDecoration: 'none'}} onClick={handlePokeSuivant}> 
                     {"suivant >>"}
             </Button>
         </center>

@@ -47,17 +47,14 @@ export function HomePage() {
     const navigate = useNavigate();
 
     const handlePokemon = () => {
-      console.log("depuis HomePage")
       navigate(`pokemon/`+numeroPokemon);
     };
 
     const handlePokedex = () => {
-      console.log("depuis HomePage")
       navigate(`pokedex/0`);
     };
 
     const handleRandomPoke = () => {
-      console.log("depuis HomePage")
       navigate(`pokemon/${numRandom}`);
     };
 

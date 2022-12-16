@@ -5,7 +5,6 @@ import { Grid } from "@mui/material";
 
 const FavorisList = () => {
   const cards = useSelector((state) => state.ComposantFavoris);
-  console.log("cards : "+cards)
   if (cards.length === 0) {
     return (
       <div>
@@ -26,7 +25,6 @@ const FavorisList = () => {
             <React.Fragment key={index}>
               <Grid item xs={3}>
                 <PokeListCard
-                  isChecked={card.isChecked}
                   name={card.name}
                   pokeNumber={card.pokeNumber} 
                   id={card.id}

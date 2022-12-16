@@ -24,7 +24,6 @@ export function PokeCard({i, offset, name, tabImg, checked}) {
           setIsFav(false);
         }
     });
-
     
       const handleFavori = (event) => {
         if(!isChecked) {
@@ -37,14 +36,14 @@ export function PokeCard({i, offset, name, tabImg, checked}) {
               isChecked: true,
             })
           );
-          console.log("ajouté aux favoris");
+          console.log("pokemon ajouté aux favoris");
         } else {
           if (event.target.baseURI.includes("HomePage")) {
             dispatch(removeCard(name));
           } else {
             setIsChecked(false);
             dispatch(removeCard(name));
-            console.log("suprimé des favoris");
+            console.log("pokemon supprimé des favoris");
           }
         }
       };

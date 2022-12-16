@@ -6,7 +6,6 @@ export function HeaderPokedex() {
     const navigate = useNavigate();
 
     const handleHome = () => {
-        console.log("depuis headerPokedex")
         navigate(`/`);
       };
 

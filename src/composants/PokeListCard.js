@@ -1,9 +1,8 @@
 import {Box, Grid} from '@mui/material';
 
-export default function PokeListCard({isChecked, pokeNumber, name, id}) {
+export default function PokeListCard({pokeNumber, name, id}) {
     const urlImg =`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/`;
     const urlImgFin = `.png`
-    console.log("dans pokeListCard")
     return (
         <div>
        <Grid item xs={3}>

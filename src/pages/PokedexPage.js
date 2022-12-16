@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import { Grid, Container, Button} from '@mui/material';
 import { PokeCard } from '../composants/PokeCard'
 import { HeaderPokedex } from "../composants/HeaderPokedex";
+import { useNavigate } from "react-router-dom";
 
 export function PokedexPage() {
   let limite = 20;
   let urlPage = window.location.href.split("/")
   let offset = urlPage[urlPage.length-1];
   offset = parseInt(offset)
-  console.log("offset : "+offset)
 
   document.body.style.backgroundImage = `url("/assets/pokemon-background-5.png")`;
   document.body.style.backgroundSize = "100% 100%"; 
@@ -17,6 +17,7 @@ export function PokedexPage() {
   const [tabImg, setTabImg] = useState([0]);
   const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/`;
   const imageUrlFin = `.png`
+
   useEffect(() => {
     const url = `https://pokeapi.co/api/v2/pokemon-species/?offset=${offset}&limit=${limite}`;
 
@@ -35,7 +36,26 @@ export function PokedexPage() {
         setTabImg(tempTabImg)
     });
 
-  }, []);
+  }, [offset]);
+
+  const navigate = useNavigate();
+
+  const handleDebut = () => {
+    navigate(`../pokedex/0`);
+  };
+
+  const handlePrecedent = () => {
+    navigate(`../pokedex/${offset==0? 0 : parseInt(offset)-20}`);
+  };
+
+  const handleSuivant = () => {
+    navigate(`../pokedex/${offset==880? 880 : parseInt(offset)+20}`);
+  };
+
+  const handleFin = () => {
+    navigate(`../pokedex/880`);
+  };
+
     return (
       <div>
         <HeaderPokedex></HeaderPokedex>
@@ -53,19 +73,19 @@ export function PokedexPage() {
             <center>
               <div>
                 <br/>
-                <Button style={{ color: '#000', textDecoration: 'none'}} href={`../pokedex/0`}> 
+                <Button style={{ color: '#000', textDecoration: 'none'}} onClick={handleDebut}> 
                   {"<<<< début"}
                 </Button>
                 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
-                <Button style={{ color: '#000', textDecoration: 'none'}} href={`../pokedex/${offset==0? 0 : parseInt(offset)-20}`}> 
+                <Button style={{ color: '#000', textDecoration: 'none'}} onClick={handlePrecedent}> 
                   {"<< précédent"}
                 </Button>
                 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
-                <Button style={{ color: '#000', textDecoration: 'none'}} href={`../pokedex/${offset==880? 880 : parseInt(offset)+20}`}> 
+                <Button style={{ color: '#000', textDecoration: 'none'}} onClick={handleSuivant}> 
                   {"suivant >>"}
                 </Button>
                 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
-                <Button style={{ color: '#000', textDecoration: 'none'}} href={`../pokedex/880`}> 
+                <Button style={{ color: '#000', textDecoration: 'none'}} onClick={handleFin}> 
                   {"fin >>>>"}&#160;&#160;
                 </Button>
                 <div><br/></div>

@@ -5,7 +5,6 @@ export function HeaderPokemon(numeroPokemon, nomPokemonFr) {
     const navigate = useNavigate();
 
     const handleNavigate = () => {
-        console.log("depuis headerPokemon")
         navigate(`../pokedex/${parseInt(parseInt((numeroPokemon-1)/20)*20)}`);
       };
 
