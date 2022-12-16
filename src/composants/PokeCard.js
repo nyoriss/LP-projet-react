@@ -79,7 +79,7 @@ export function PokeCard({i, offset, name, tabImg, checked}) {
             <center>
                 <div style={{width: '154px', backgroundImage: 'url("/assets/pokeball_fond.png")', border: '1px solid black'}} key={i} >
                     <p>{i+1+offset} : {name}</p>
-                    <img src={tabImg[i]} href={tabImg[i]} ></img>
+                    <img src={tabImg[i]} ></img>
                     <br/>
                 </div>
             </center>
