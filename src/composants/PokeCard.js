@@ -4,16 +4,11 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 import { useDispatch, useSelector } from "react-redux";
 import { addCard, removeCard } from "../store/redux";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
 export function PokeCard({i, offset, name, tabImg, checked}) {
 
-    const navigate = useNavigate();
     const [isChecked, setIsChecked] = useState(checked);
     const [isFav, setIsFav] = useState();
-    const [img, setImg] = useState();
-    const [type, setDataType] = useState();
-    const [id, setId] = useState();
 
     const dispatch = useDispatch();
     const favorisState = useSelector((state) => state.ComposantFavoris);
@@ -38,6 +33,7 @@ export function PokeCard({i, offset, name, tabImg, checked}) {
             addCard({
               id: i,
               name: name,
+              pokeNumber: i+1+offset,
               isChecked: true,
             })
           );

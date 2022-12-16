@@ -2,6 +2,7 @@ import { Autocomplete, TextField, Button } from '@mui/material';
 import { useEffect, useState } from "react";
 import FavorisList from '../composants/favoris/FavorisList';
 import { HeaderHome } from "../composants/HeaderHome"
+import { useNavigate } from "react-router-dom";
 
 export function HomePage() {
     let numRandom = Math.floor(Math.random() * 905)+1;
@@ -39,11 +40,26 @@ export function HomePage() {
       searchButton.addEventListener('click', function() {
         let numPoke = searchBar.getAttribute("value").split(" ")[0]
         setNumeroPokemon(numPoke? numPoke:"1")
-        console.log("searchBar value : "+numPoke)
-        console.log("bouton pressé "+ numPoke)
       })
 
     })
+
+    const navigate = useNavigate();
+
+    const handlePokemon = () => {
+      console.log("depuis HomePage")
+      navigate(`pokemon/`+numeroPokemon);
+    };
+
+    const handlePokedex = () => {
+      console.log("depuis HomePage")
+      navigate(`pokedex/0`);
+    };
+
+    const handleRandomPoke = () => {
+      console.log("depuis HomePage")
+      navigate(`pokemon/${numRandom}`);
+    };
 
     return (
       <div id="sidebar">
@@ -57,15 +73,15 @@ export function HomePage() {
                     sx={{ width: 300, height: 50 }}
                     renderInput={(tabPokemons) => <TextField{...tabPokemons}  label="Pokemon" />}
                 />
-                <Button variant="contained" color="success" id="bouton" height="50px" href={`pokemon/`+numeroPokemon} >
+                <Button variant="contained" color="success" id="bouton" height="50px" onClick={handlePokemon}>
                   {"->"}
                 </Button>
               <br/><br/>
-              <Button variant="contained" color="error" href={`pokedex/0`}>
+              <Button variant="contained" color="error" onClick={handlePokedex}>
                 Pokédex
               </Button>
               <br/><br/>
-              <Button variant="contained" color="warning" href={`pokemon/${numRandom}`}>
+              <Button variant="contained" color="warning" onClick={handleRandomPoke}>
                 Pokemon aléatoire
               </Button>
             </div>

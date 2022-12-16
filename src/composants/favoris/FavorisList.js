@@ -9,12 +9,13 @@ const FavorisList = () => {
   if (cards.length === 0) {
     return (
       <div>
-        <h1> Equipe de favoris vide </h1>
+        <h1> Pas de pokemons favoris </h1>
       </div>
     );
   } else {
     return (
       <div>
+        <h1> Vos pokemons favoris </h1>
         <Grid
           container
           rowSpacing={1}
@@ -27,6 +28,7 @@ const FavorisList = () => {
                 <PokeListCard
                   isChecked={card.isChecked}
                   name={card.name}
+                  pokeNumber={card.pokeNumber} 
                   id={card.id}
                 />
               </Grid>

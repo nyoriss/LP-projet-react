@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button, Box } from '@mui/material';
 import { PokeDetails } from '../composants/PokeDetails'
+import { useNavigate } from "react-router-dom";
 
 export function PokePage() {
 
@@ -32,7 +33,6 @@ export function PokePage() {
             data.flavor_text_entries.forEach(element => {
             if(element.language.name == "fr" && !trouve) {
                 trouve = true
-                //console.log(element.flavor_text)
                 setDescPokemon(element.flavor_text)
             }
             });
@@ -44,7 +44,6 @@ export function PokePage() {
             let tempTabTypes = []
             dataPoke.types.forEach(type => {
                 tempTabTypes.push(type.type.name)
-                //console.log(type.type.name)
             });
             setTypesPokemon(tempTabTypes)
     });
@@ -52,7 +51,6 @@ export function PokePage() {
     fetch(urlNomFr)
     .then((response) => response.json())
     .then((dataPoke) => {
-        //console.log(dataPoke.names[4].name)
         setNomPokemonFr(dataPoke.names[4].name)
     })
   }, [numeroPokemon])
@@ -62,13 +60,20 @@ export function PokePage() {
   console.log(numeroPokemon)
 
 
+  const navigate = useNavigate();
+
+  const handlePokedex = () => {
+    console.log("depuis HomePage")
+    navigate(`../pokedex/${parseInt(parseInt((numeroPokemon-1)/20)*20)}`);
+  };
+
     return (
       <div >
             <Box sx={{
                 backgroundColor: '#ff0000',
             }}>
                 <Button variant="contained" color="success" style={{ color: '#000', textDecoration: 'none', margin: '10px'}} 
-                    href={`../pokedex/${parseInt(parseInt((numeroPokemon-1)/20)*20)}`}>
+                    onClick={handlePokedex}>
                     ← Retour au pokedex
                 </Button> 
                 <center>

@@ -9,9 +9,11 @@ const composantFavorisSlice = createSlice({
       if (!state.includes(action.payload.id)) {
         state.push(action.payload);
       }
+      console.log("redux add card")
     },
     removeCard: (state, action) => {
       state = state.filter((it) => it.name !== action.payload);
+      console.log("redux remove card")
       return state;
     },
   },
@@ -25,6 +27,7 @@ const filterResult = createSlice({
   reducers: {
     addFilter: (state, action) => {
       state[0] = action.payload;
+      console.log("add filter")
     },
   },
 });

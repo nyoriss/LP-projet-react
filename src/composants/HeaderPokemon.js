@@ -1,12 +1,21 @@
 import {Button, Box} from '@mui/material';
+import { useNavigate } from "react-router-dom";
+
 export function HeaderPokemon(numeroPokemon, nomPokemonFr) {
+    const navigate = useNavigate();
+
+    const handleNavigate = () => {
+        console.log("depuis headerPokemon")
+        navigate(`../pokedex/${parseInt(parseInt((numeroPokemon-1)/20)*20)}`);
+      };
+
     return (
             <div>
                 <Box
                     sx={{
                         backgroundColor: 'primary.dark',
                 }}>
-                    <Button style={{ color: '#000', textDecoration: 'none', margin: '10px'}} hreff={`../pokedex/${parseInt(parseInt((numeroPokemon-1)/20)*20)}`}>
+                    <Button style={{ color: '#000', textDecoration: 'none', margin: '10px'}}  onClick={handleNavigate}>
                         {"Retour au pokedex"}
                     </Button> 
                     <center>

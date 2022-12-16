@@ -1,14 +1,14 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
-//import { ComposantListe } from './composants/ComposantListe';
+import { Provider } from "react-redux";
+import { store } from "./store/redux";
 import { PokePage } from './pages/PokePage';
 import { HomePage } from './pages/HomePage';
 import { PokedexPage } from './pages/PokedexPage';
 
 function App() {
   return (
-    <div className="App">
+      <Provider store={store}>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<HomePage/>}/>
@@ -17,7 +17,7 @@ function App() {
             <Route path="/pokemon/:pokemonId" element={<PokePage />}/>
           </Routes>
         </BrowserRouter>
-    </div>
+      </Provider>
   );
 }
 
