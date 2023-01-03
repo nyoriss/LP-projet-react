@@ -65,7 +65,7 @@ export function PokedexPage() {
               <Grid container spacing={2} rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                   {tab.map((name, i) => (
                     <div>
-                      <PokeCard i={i} offset={offset} name={name} tabImg={tabImg} ></PokeCard>
+                      <PokeCard i={i} offset={offset} name={name} ></PokeCard>
                     </div>
                   ))}
               </Grid>

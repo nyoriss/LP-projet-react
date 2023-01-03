@@ -1,21 +1,24 @@
 import {Box, Grid, IconButton} from '@mui/material';
-import StarIcon from '@mui/icons-material/Star';
-import StarBorderIcon from '@mui/icons-material/StarBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { useDispatch, useSelector } from "react-redux";
 import { addCard, removeCard } from "../store/redux";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-export function PokeCard({i, offset, name, tabImg, checked}) {
+export function PokeCard({i, offset, name}) { //, checked
 
-    const [isChecked, setIsChecked] = useState(checked);
+    const [isChecked, setIsChecked] = useState(0); //checked
     const [isFav, setIsFav] = useState();
 
     const dispatch = useDispatch();
     const favorisState = useSelector((state) => state.ComposantFavoris);
-  
+
+    const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/`;
+    const imageUrlFin = `.png`
+
     useEffect(() => {
-    let include = favorisState.find((card) => card.name === name);
+        let include = favorisState.find((card) => card.name === name);
         if (include) {
           setIsChecked(true);
         }
@@ -25,7 +28,7 @@ export function PokeCard({i, offset, name, tabImg, checked}) {
           setIsFav(false);
         }
     });
-    
+
       const handleFavori = (event) => {
         if(!isChecked) {
           setIsChecked(true);
@@ -55,7 +58,6 @@ export function PokeCard({i, offset, name, tabImg, checked}) {
         navigate(`../pokemon/${i+1+offset}`);
       };
     
-
     return (
         <Grid item xs={3}>
         <Box component="div"
@@ -66,24 +68,23 @@ export function PokeCard({i, offset, name, tabImg, checked}) {
             opacity: [0.9, 0.8, 0.7],
             },
         }}>
-        <IconButton onClick={handleFavori}>
-          {isFav ? <StarIcon /> : <StarBorderIcon />}
-        </IconButton>
-        <a style={{ 
-            color: '#000', 
-            textDecoration: 'none', 
-            verticalAlign: 'middle', 
-            }} 
-            onClick={handlePokemon}
-        >
+            <IconButton onClick={handleFavori}>
+              {isFav ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+            </IconButton>
             <center>
-                <div style={{width: '154px', backgroundImage: 'url("/assets/pokeball_fond.png")', border: '1px solid black'}} key={i} >
-                    <p>{i+1+offset} : {name}</p>
-                    <img src={tabImg[i]} ></img>
-                    <br/>
+                <div style={{width: '154px', backgroundImage: 'url("/assets/pokeball_fond.png")', border: '1px solid black'}} key={i}>
+                    <div onClick={handlePokemon} >
+                      <p style={{ 
+                          color: '#000', 
+                          textDecoration: 'none', 
+                          verticalAlign: 'middle', }} >
+                        {i+1+offset} : {name}
+                      </p>
+                      <img src={imageUrl+(i+1+offset)+imageUrlFin} ></img>
+                      <br/>
+                    </div>
                 </div>
             </center>
-        </a>
         </Box>
     </Grid>
 )}

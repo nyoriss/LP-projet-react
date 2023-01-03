@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import PokeListCard from "../PokeListCard";
+//import PokeListCard from "../PokeListCard";
+import { PokeCard } from "../PokeCard";
 import { Grid } from "@mui/material";
 
 const FavorisList = () => {
@@ -24,9 +25,15 @@ const FavorisList = () => {
           {cards.map((card, index) => (
             <React.Fragment key={index}>
               <Grid item xs={3}>
-                <PokeListCard
+                {/*<PokeListCard
                   name={card.name}
                   pokeNumber={card.pokeNumber} 
+                  id={card.id}
+                />*/}
+                <PokeCard
+                  name={card.name}
+                  i={card.pokeNumber-1} 
+                  offset={0}
                   id={card.id}
                 />
               </Grid>
