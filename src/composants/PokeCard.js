@@ -34,7 +34,7 @@ export function PokeCard({i, offset, name}) { //, checked
           setIsChecked(true);
           dispatch(
             addCard({
-              id: i,
+              id: i+1+offset,
               name: name,
               pokeNumber: i+1+offset,
               isChecked: true,
@@ -42,7 +42,7 @@ export function PokeCard({i, offset, name}) { //, checked
           );
           console.log("pokemon ajouté aux favoris");
         } else {
-          if (event.target.baseURI.includes("HomePage")) {
+          if (window.location.href.includes("HomePage")) {
             dispatch(removeCard(name));
           } else {
             setIsChecked(false);
@@ -80,7 +80,7 @@ export function PokeCard({i, offset, name}) { //, checked
                           verticalAlign: 'middle', }} >
                         {i+1+offset} : {name}
                       </p>
-                      <img src={imageUrl+(i+1+offset)+imageUrlFin} ></img>
+                      <img src={imageUrl+(i+1+offset)+imageUrlFin} />
                       <br/>
                     </div>
                 </div>

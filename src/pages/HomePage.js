@@ -1,5 +1,5 @@
-import { Autocomplete, TextField, Button } from '@mui/material';
-import { useEffect, useState } from "react";
+import { Button } from '@mui/material';
+import { useState } from "react";
 import FavorisList from '../composants/favoris/FavorisList';
 import { HeaderHome } from "../composants/HeaderHome"
 import { RechercheComposant } from '../composants/RechercheComposant';
@@ -7,9 +7,6 @@ import { useNavigate } from "react-router-dom";
 
 export function HomePage() {
     let numRandom = Math.floor(Math.random() * 905)+1;
-    const url = `https://pokeapi.co/api/v2/pokemon-species/?offset=0&limit=905`;
-    const [tabPokemons, setTabPokemons] = useState([0]);
-    const [numeroPokemon, setNumeroPokemon] = useState([0]);
 
     document.body.style.backgroundImage = `url("/assets/pokemon-background-4.jpg")`;
     document.body.style.backgroundSize = "100% 255%";
@@ -34,15 +31,16 @@ export function HomePage() {
             <HeaderHome></HeaderHome>
             <div>
               <RechercheComposant/>
-              <br/><br/>
+              <br/><br/><br/>
               <Button variant="contained" color="error" onClick={handlePokedex}>
                 Pokédex
               </Button>
-              <br/><br/>
+              <br/><br/><br/>
               <Button variant="contained" color="warning" onClick={handleRandomPoke}>
                 Pokemon aléatoire
               </Button>
             </div>
+            <br/><br/>
            <FavorisList/>
         </center>
       </div>
