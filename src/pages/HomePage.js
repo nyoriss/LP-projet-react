@@ -1,5 +1,4 @@
 import { Button } from '@mui/material';
-import { useState } from "react";
 import FavorisList from '../composants/favoris/FavorisList';
 import { HeaderHome } from "../composants/HeaderHome"
 import { RechercheComposant } from '../composants/RechercheComposant';

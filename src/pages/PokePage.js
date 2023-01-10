@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { Button, Box } from '@mui/material';
+import { Button } from '@mui/material';
 import { PokeDetails } from '../composants/PokeDetails'
 import { useNavigate } from "react-router-dom";
+import { HeaderPokemon } from "../composants/HeaderPokemon";
 
 export function PokePage() {
 
@@ -55,13 +56,9 @@ export function PokePage() {
     })
   }, [numeroPokemon])
   document.body.style.backgroundImage = `url("/assets/pokeball_fond.png")`
-  document.body.style.backgroundSize = "100% 150%"; 
+  document.body.style.backgroundSize = "100% 150%"
 
   const navigate = useNavigate();
-
-  const handlePokedex = () => {
-    navigate(`../pokedex/${parseInt(parseInt((numeroPokemon-1)/20)*20)}`);
-  };
 
   const handlePokeSuivant = () => {
     navigate(`../pokemon/${numeroPokemon>=905? 905 : parseInt(numeroPokemon)+1}`);
@@ -72,21 +69,7 @@ export function PokePage() {
   };
     return (
       <div >
-            <Box sx={{
-                backgroundColor: '#ff0000',
-            }}>
-                <Button variant="contained" color="success" style={{ color: '#000', textDecoration: 'none', margin: '10px'}} 
-                    onClick={handlePokedex}>
-                    ← Retour au pokedex
-                </Button> 
-                <center>
-                    <div>
-                        <h1>Page de {nomPokemonFr}</h1>
-                    </div>
-                    <br/>
-                </center>
-            </Box>
-            <br/>
+        <HeaderPokemon numeroPokemon={numeroPokemon} nomPokemonFr={nomPokemonFr}/>
         <center>
             <PokeDetails urlImageOfficialPokemon={urlImageOfficialPokemon} 
                          numeroPokemon={numeroPokemon} 

@@ -14,7 +14,6 @@ export function PokedexPage() {
   document.body.style.backgroundSize = "100% 100%"; 
 
   const [tab, setTab] = useState([0]);
-  const [tabImg, setTabImg] = useState([0]);
   const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/`;
   const imageUrlFin = `.png`
 
@@ -33,7 +32,6 @@ export function PokedexPage() {
             tempTabImg.push(imageUrl+""+ii+""+imageUrlFin)
         }
         setTab(tempTab)
-        setTabImg(tempTabImg)
     });
 
   }, [offset]);
