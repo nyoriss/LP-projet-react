@@ -57,10 +57,10 @@ export function PokeDetails({urlImageOfficialPokemon, numeroPokemon, nomPokemon,
                 <div id="divInfos" style={{alignSelf: "center", width: "475px"}}>
                 <Box sx={{padding: '10px', height: '500px'}}>
                   <div style={{textAlign: "left"}}>
-                    <p>{numeroPokemon} : {nomPokemonFr}</p>
                     <IconButton onClick={handleFavori}>
-                      {isFav ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+                        {isFav ? <FavoriteIcon /> : <FavoriteBorderIcon />}
                     </IconButton>
+                    <p>{numeroPokemon} : {nomPokemonFr}</p>
                     <p>{nomPokemon} (anglais)</p>
                     <p>{descPokemon}</p>
                   </div>
